@@ -1,0 +1,16 @@
+streamlit
+streamlit-folium
+pandas
+numpy
+fiona
+geopandas
+folium
+streamlit-aggrid
+pyclustering
+plotly
+jinja2
+pretty_html_table
+scikit-learn
+html2image
+streamlit-option-menu
+branca==0.3.1

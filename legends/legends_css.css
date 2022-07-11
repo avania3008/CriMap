@@ -1,0 +1,46 @@
+.outer {
+    border: 3px solid grey;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 14pt;
+    height: fit-content;
+    width: fit-content;
+    overflow: hidden;
+}
+
+.title {
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+.labels {
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+    position: relative;
+}
+
+li {
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+}
+
+li span {
+    float: left;
+    height: 16px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    border: 1px solid #999;
+}

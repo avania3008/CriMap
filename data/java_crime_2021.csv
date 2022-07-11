@@ -1,0 +1,120 @@
+Kode Kabupaten/Kota,Provinsi,Kabupaten/Kota,Jumlah Penduduk 2021,Harapan Lama Sekolah 2021,Tingkat Pengangguran Terbuka 2021,Persentase Penduduk Miskin 2021,Crime Total 2021,Crime Rate 2021
+3101,DKI Jakarta,Kepulauan Seribu,28240,12.63,8.58,15.06,86,29
+3171,DKI Jakarta,Kota Jakarta Selatan,2233860,13.34,7.33,3.56,1504,67.33
+3172,DKI Jakarta,Kota Jakarta Timur,3056300,13.96,8.23,4.28,2678,87.63
+3173,DKI Jakarta,Kota Jakarta Pusat,1066460,13.26,7.75,4.94,1009,94.61
+3174,DKI Jakarta,Kota Jakarta Barat,2440070,12.81,9.06,4.31,1928,79
+3175,DKI Jakarta,Kota Jakarta Utara,1784750,12.64,9.84,7.24,1549,93
+3201,Jawa Barat,Bogor,5489536,12.49,12.22,8.13,1386,14
+3202,Jawa Barat,Sukabumi,2761476,12.24,9.51,7.7,109,1
+3203,Jawa Barat,Cianjur,2506682,12,9.32,11.18,833,8
+3204,Jawa Barat,Bandung,3666156,12.7,8.32,7.15,2367,24
+3205,Jawa Barat,Garut,2604787,12.03,8.68,10.65,291,3
+3206,Jawa Barat,Tasikmalaya,1883733,12.54,6.16,11.15,497,5
+3207,Jawa Barat,Ciamis,1237726,14.2,5.06,7.97,732,7
+3208,Jawa Barat,Kuningan,1180391,12.23,11.68,13.1,922,9
+3209,Jawa Barat,Cirebon,2290967,12.27,10.38,12.3,342,3
+3210,Jawa Barat,Majalengka,1318965,12.23,5.71,12.33,1212,12
+3211,Jawa Barat,Sumedang,1159346,12.98,9.18,10.71,243,2
+3212,Jawa Barat,Indramayu,1857383,12.26,8.3,13.04,421,4
+3213,Jawa Barat,Subang,1608594,11.71,9.77,10.03,495,5
+3214,Jawa Barat,Purwakarta,1011466,12.12,10.7,8.83,673,7
+3215,Jawa Barat,Karawang,2468576,12.1,11.83,8.95,1384,14
+3216,Jawa Barat,Bekasi,3157962,13.1,10.09,5.21,1365,43.22
+3217,Jawa Barat,Bandung Barat,1814226,11.88,11.65,11.3,482,5
+3218,Jawa Barat,Pangandaran,427614,12.08,3.25,9.65,732,7
+3271,Jawa Barat,Kota Bogor,1052359,13.42,11.79,7.24,940,9
+3272,Jawa Barat,Kota Sukabumi,350804,13.58,10.78,8.25,263,3
+3273,Jawa Barat,Kota Bandung,2452943,14.21,11.46,4.37,429,4
+3274,Jawa Barat,Kota Cirebon,336864,13.13,10.53,10.03,299,3
+3275,Jawa Barat,Kota Bekasi,2564941,14.1,10.88,4.74,380,14.82
+3276,Jawa Barat,Kota Depok,2085935,13.93,9.76,2.58,745,35.7
+3277,Jawa Barat,Kota Cimahi,571632,13.81,13.07,5.35,482,5
+3278,Jawa Barat,Kota Tasikmalaya,723921,13.46,7.66,13.13,394,4
+3279,Jawa Barat,Kota Banjar,203417,13.24,6.09,7.11,207,2
+3301,Jawa Tengah,Cilacap,1963824,12.63,9.97,11.67,412,21.2
+3302,Jawa Tengah,Banyumas,1789630,13.03,6.05,13.66,425,23.9
+3303,Jawa Tengah,Purbalingga,1007794,12,6.05,16.24,176,17.6
+3304,Jawa Tengah,Banjarnegara,1026866,11.63,5.86,16.23,169,16.6
+3305,Jawa Tengah,Kebumen,1361913,13.35,6.03,17.83,166,12.3
+3306,Jawa Tengah,Purworejo,773588,13.51,3.59,12.4,170,22.1
+3307,Jawa Tengah,Wonosobo,886613,11.76,5.26,17.67,156,17.7
+3308,Jawa Tengah,Magelang,1305512,12.55,5.03,11.91,302,23.2
+3309,Jawa Tengah,Boyolali,1070247,12.57,5.09,10.62,463,43.6
+3310,Jawa Tengah,Klaten,1267272,13.39,5.48,13.49,357,28.3
+3311,Jawa Tengah,Sukoharjo,911603,13.84,3.32,8.23,251,27.7
+3312,Jawa Tengah,Wonogiri,1049292,12.5,2.43,11.55,116,11.1
+3313,Jawa Tengah,Karanganyar,938808,13.69,5.89,10.68,198,21.2
+3314,Jawa Tengah,Sragen,983641,12.84,4.76,13.83,233,23.8
+3315,Jawa Tengah,Grobogan,1460873,12.44,4.38,12.74,218,15
+3316,Jawa Tengah,Blora,886147,12.35,3.81,12.39,106,12
+3317,Jawa Tengah,Rembang,647766,12.12,3.67,15.8,85,13.2
+3318,Jawa Tengah,Pati,1330983,12.94,4.6,10.21,230,17.4
+3319,Jawa Tengah,Kudus,852443,13.24,3.77,7.6,164,19.3
+3320,Jawa Tengah,Jepara,1188510,12.76,4.23,7.44,245,20.7
+3321,Jawa Tengah,Demak,1212377,13.32,5.28,12.92,187,15.5
+3322,Jawa Tengah,Semarang,1059844,12.98,5.02,7.82,298,28.3
+3323,Jawa Tengah,Temanggung,794403,12.32,2.62,10.17,111,14
+3324,Jawa Tengah,Kendal,1025020,12.96,7.55,10.24,194,19
+3325,Jawa Tengah,Batang,807005,12.13,6.59,9.68,192,23.9
+3326,Jawa Tengah,Pekalongan,976504,12.42,4.28,10.57,161,16.6
+3327,Jawa Tengah,Pemalang,1484209,11.96,6.71,16.56,186,12.6
+3328,Jawa Tengah,Tegal,1608611,12.89,9.97,8.6,149,9.3
+3329,Jawa Tengah,Brebes,1992685,12.05,9.78,17.43,157,7.9
+3371,Jawa Tengah,Kota Magelang,121610,14.15,8.73,7.75,124,102
+3372,Jawa Tengah,Kota Surakarta,522728,14.88,7.85,9.4,593,113.5
+3373,Jawa Tengah,Kota Salatiga,193525,15.42,7.26,5.14,145,75.4
+3374,Jawa Tengah,Kota Semarang,1656564,15.53,9.54,4.56,873,52.8
+3375,Jawa Tengah,Kota Pekalongan,308310,12.85,6.89,7.59,165,53.7
+3376,Jawa Tengah,Kota Tegal,275781,13.07,8.25,8.12,151,55.1
+3401,DI Yogyakarta,Kulon Progo,442724,14.27,3.69,18.38,485,112
+3402,DI Yogyakarta,Bantul,1050308,15.38,4.04,14.04,1322,128
+3403,DI Yogyakarta,Gunung Kidul,767464,12.98,2.2,17.69,281,38
+3404,DI Yogyakarta,Sleman,1265429,16.74,5.17,8.64,2610,212
+3471,DI Yogyakarta,Kota Yogyakarta,444295,17.6,9.13,7.69,633,145
+3501,Jawa Timur,Pacitan,589108,12.65,2.04,15.11,47,8
+3502,Jawa Timur,Ponorogo,955839,13.74,4.38,10.26,150,16
+3503,Jawa Timur,Trenggalek,734888,12.47,3.53,12.14,205,28
+3504,Jawa Timur,Tulungagung,1096588,13.32,4.91,7.51,749,68
+3505,Jawa Timur,Blitar,1231013,12.63,3.66,9.65,271,22
+3506,Jawa Timur,Kediri,1644400,13.44,5.15,11.64,840,51
+3507,Jawa Timur,Malang,2668296,13.24,5.4,10.5,1997,75
+3508,Jawa Timur,Lumajang,1127094,11.88,3.51,10.05,589,52
+3509,Jawa Timur,Jember,2550360,13.43,5.44,10.41,1574,62
+3510,Jawa Timur,Banyuwangi,1718462,13.1,5.42,8.07,1312,76
+3511,Jawa Timur,Bondowoso,778525,13.29,4.46,14.73,679,87
+3512,Jawa Timur,Situbondo,688337,13.16,3.68,12.63,341,50
+3513,Jawa Timur,Probolinggo,1155894,12.36,4.55,18.91,379,33
+3514,Jawa Timur,Pasuruan,1611805,12.58,6.03,9.7,994,62
+3515,Jawa Timur,Sidoarjo,2091930,14.94,10.87,5.93,1013,48
+3516,Jawa Timur,Mojokerto,1125522,12.95,5.54,10.62,691,61
+3517,Jawa Timur,Jombang,1325914,13.57,7.09,10,401,30
+3518,Jawa Timur,Nganjuk,1109683,12.87,4.98,11.85,428,39
+3519,Jawa Timur,Madiun,750143,13.17,4.99,11.91,103,14
+3520,Jawa Timur,Magetan,674133,14.04,3.86,10.66,876,130
+3521,Jawa Timur,Ngawi,873346,12.83,4.25,15.57,1107,127
+3522,Jawa Timur,Bojonegoro,1307602,12.68,4.82,13.27,430,33
+3523,Jawa Timur,Tuban,1203127,12.22,4.68,16.31,570,47
+3524,Jawa Timur,Lamongan,1356027,13.77,4.9,13.86,338,25
+3525,Jawa Timur,Gresik,1320570,13.77,8,12.42,1803,137
+3526,Jawa Timur,Bangkalan,1071712,11.73,8.07,21.57,935,87
+3527,Jawa Timur,Sampang,976020,12.38,3.45,23.76,663,68
+3528,Jawa Timur,Pamekasan,853507,13.65,3.1,15.3,647,76
+3529,Jawa Timur,Sumenep,1129822,13.33,2.31,20.51,198,18
+3571,Jawa Timur,Kota Kediri,287962,15.27,6.37,7.75,506,176
+3572,Jawa Timur,Kota Blitar,150371,14.33,6.61,7.89,422,281
+3573,Jawa Timur,Kota Malang,844933,15.75,9.65,4.62,494,58
+3574,Jawa Timur,Kota Probolinggo,241202,13.6,6.55,7.44,287,119
+3575,Jawa Timur,Kota Pasuruan,209528,13.63,6.23,6.88,528,252
+3576,Jawa Timur,Kota Mojokerto,133272,14.01,6.87,6.39,417,313
+3577,Jawa Timur,Kota Madiun,196917,14.41,8.15,5.09,65,33
+3578,Jawa Timur,Kota Surabaya,2880284,14.81,9.68,5.23,1648,57
+3579,Jawa Timur,Kota Batu,214653,14.16,6.57,4.09,147,68
+3601,Banten,Pandeglang,1288314,13.49,7.7,10.72,415,4.8
+3602,Banten,Lebak,1407857,11.98,7.86,10.29,349,4.03
+3603,Banten,Tangerang,3293533,12.84,9.06,7.12,1190,13.75
+3604,Banten,Serang,1647790,12.58,10.58,5.49,752,8.69
+3671,Banten,Kota Tangerang,1911914,13.87,9.07,5.93,1803,8.4
+3672,Banten,Kota Cilegon,441761,13.18,10.13,4.24,553,6.39
+3673,Banten,Kota Serang,704618,12.79,9.41,6.79,508,5.87
+3674,Banten,Kota Tangerang Selatan,1365688,14.66,8.6,2.57,3179,14.76

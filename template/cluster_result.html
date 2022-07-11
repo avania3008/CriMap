@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CriMap - Cluster Result</title>
+    <style type="text/css">
+        body {
+            padding: 20px;
+        }
+        
+        .header {
+            height: 80px;
+        }
+        
+        .head-title {
+            text-align: center;
+            text-decoration: underline;
+        }
+        
+        .cont {
+            height: fit-content;
+            padding: 15px;
+            border: 2pt solid gray;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .tbl {
+            overflow-x: auto;
+            overflow-y: auto;
+            max-height: 400px;
+            width: fit-content;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="head-title">CriMap - Hasil Analisis <i>Cluster</i></h1>
+    </div>
+
+    <div class="cont">
+        <h2>Detail Analisis <i>Cluster</i> dengan Indikator Kriminalitas & Lainnya</h2>
+        <p><strong>Jumlah <i>cluster</i></strong> : {{all_k}}</p>
+        <p><strong><i>Cluster medoids</i></strong> :</p>
+        <div class="tbl">
+            {{all_meds_table}}
+        </div>
+        <p><strong>Hasil <i>cluster</i></strong> :</p>
+        <div class="tbl">
+            {{all_res_table}}
+        </div>
+        <p><strong>Visualisasi hasil CLARANS <i>clustering</i></strong> :</p>
+        {{all_vis}}
+        <p><strong>Statistik deskriptif</strong> :</p>
+        <div class="tbl">
+            {{all_summary}}
+        </div>
+    </div>
+    <div class="cont">
+        <h2>Detail Analisis <i>Cluster</i> dengan Indikator Kriminalitas</h2>
+        <p><strong>Jumlah <i>cluster</i></strong> : {{crime_k}}</p>
+        <p><strong><i>Cluster medoids</i></strong> :</p>
+        <div class="tbl">
+            {{crime_meds_table}}
+        </div>
+        <p><strong>Hasil <i>cluster</i></strong> :</p>
+        <div class="tbl">
+            {{crime_res_table}}
+        </div>
+        <p><strong>Visualisasi hasil CLARANS <i>clustering</i></strong> :</p>
+        {{crime_vis}}
+        <p><strong>Statistik deskriptif</strong> :</p>
+        <div class="tbl">
+            {{crime_summary}}
+        </div>
+    </div>
+
+</body>
+
+</html>
