@@ -303,12 +303,19 @@ def main():
                 zip_files.write(f"{temp_path}/CriMap_Tabel_Cluster.csv", os.path.basename(f"{temp_path}/CriMap_Tabel_Cluster.csv"))
                 zip_files.close()
 
+                if os.path.exists(f'{temp_path}/CriMap_Peta_Kriminalitas.html'):
+                    os.remove(f'{temp_path}/CriMap_Peta_Kriminalitas.html')
+                if os.path.exists(f'{temp_path}/CriMap_Hasil_Cluster.html'):
+                    os.remove(f'{temp_path}/CriMap_Hasil_Cluster.html')
+                if os.path.exists(f'{temp_path}/CriMap_Tabel_Cluster.csv'):
+                    os.remove(f'{temp_path}/CriMap_Tabel_Cluster.csv')
+
                 file_size = os.path.getsize(output_file)
                 file_size_mb = round(file_size/(1024*1024), 2)
                 dwl_label = f"Simpan Hasil ({file_size_mb} MB)"
 
-                with open(output_file, 'rb') as f:
-                    b64 = base64.b64encode(f.read()).decode('utf8')
+                # with open(output_file, 'rb') as f:
+                #     b64 = base64.b64encode(f.read()).decode('utf8')
 
                 button_uuid = str(uuid.uuid4()).replace('-', '')
                 button_id = re.sub('\d+', '', button_uuid)
@@ -338,7 +345,7 @@ def main():
                             }}
                     </style> """
 
-                dl_link = custom_css + f'<a download="CriMap_Hasil_Clustering_dan_Peta.zip" id="{button_id}" href="data:application/zip;base64,{b64}">{dwl_label}</a><br></br>'
+                dl_link = custom_css + f'<a download="CriMap_Hasil_Clustering_dan_Peta.zip" id="{button_id}" href="file:///{output_file}">{dwl_label}</a><br></br>'
 
                 st.warning("PERHATIAN!! Jangan lupa untuk menyimpan hasil saat ini dengan menekan tombol 'Simpan Hasil' sebelum menekan kembali tombol 'Lakukan Clustering' untuk melakukan analisis ulang.")
                 st.markdown(dl_link, unsafe_allow_html=True)
