@@ -1,7 +1,7 @@
 # Tentang CriMap
 CriMap adalah sebuah aplikasi pemetaan kriminalitas kabupaten dan kota di Pulau Jawa berbasis web. Aplikasi web ini dikembangkan menggunakan *library Streamlit* pada bahasa pemrograman *Python*.
 
-[Klik di sini](https://avania3008-crimap-crimap-3yy3lj.streamlitapp.com/){:target="_blank"} untuk mengakses *website* CriMap.
+<a href="https://avania3008-crimap-crimap-3yy3lj.streamlitapp.com/" target="_blank">Klik di sini</a> untuk mengakses *website* CriMap.
 
 CriMap memiliki 3 halaman utama :
 - Halaman **Beranda**
