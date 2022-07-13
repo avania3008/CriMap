@@ -6,11 +6,11 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from st_aggrid import AgGrid
-from streamlit_folium import folium_static
 import folium
 import folium.plugins as fp
 import branca.colormap as cmp
 import base64
+import minify_html
 import streamlit.components.v1 as components
 from html2image import Html2Image
 from PIL import Image
@@ -34,7 +34,6 @@ def hideColorScale(layer, m):
             del(layer._children[key])
     layer.add_to(m)
 
-@st.experimental_singleton(suppress_st_warning=True, show_spinner=False)
 def create_map():
     # select java from geodf
     java_geodf = geodf[geodf["PROVINSI"].isin(["DKI JAKARTA","JAWA BARAT","JAWA TENGAH","DAERAH ISTIMEWA YOGYAKARTA","JAWA TIMUR","BANTEN"])]
@@ -149,15 +148,17 @@ def create_map():
     
 def main():
     st.markdown("<h2 style='text-align: center; color:#3E3636;'>Peta Kriminalitas Tahun 2020</h2>", unsafe_allow_html=True)
+    
     lf, md, rt = st.columns(3)
     gif_runner = md.image("img/loading.gif", use_column_width=True)
     if "map_2020_html" not in st.session_state:
       map_2020 = create_map()
-      # map_2020.save(f"{temp_path}/CriMap_Peta_Kriminalitas_2020.html")
-      st.session_state["map_2020_html"] = map_2020.get_root().render()
+      map_html = map_2020.get_root().render()
+      minified_map = minify_html.minify(map_html)
+      st.session_state["map_2020_html"] = minified_map
     components.html(st.session_state["map_2020_html"], height=500)
-    # folium_static(map_2020)
     gif_runner.empty()
+    
     with st.expander("Tentang Data", expanded=True):
         st.markdown("<h5 style='text-align: center; color:#3E3636;'>Tabel Data</h5>", unsafe_allow_html=True)
         raw = df[["Kode Wilayah","Provinsi","Kabupaten/Kota","KP 2020","PPM 2020","RLS 2020","CT 2020","CRR 2020","Cl PC1","Cl Crime","Cl PC1 Name","Cl Crime Name"]]
