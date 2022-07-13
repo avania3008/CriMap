@@ -23,7 +23,7 @@ import streamlit.components.v1 as components
 import page.Map as Map
 import jinja2
 from pretty_html_table import build_table
-from zipfile import ZipFile
+import zipfile
 
 temp_path = tempfile.gettempdir()
 
@@ -174,6 +174,8 @@ def delete_results():
         os.remove(f'{temp_path}/CriMap_Hasil_Cluster.html')
     if os.path.exists(f'{temp_path}/CriMap_Tabel_Cluster.csv'):
         os.remove(f'{temp_path}/CriMap_Tabel_Cluster.csv')
+
+def delete_zip():
     if os.path.exists(f'{temp_path}/CriMap_Hasil_Clustering_dan_Peta.zip'):
         os.remove(f'{temp_path}/CriMap_Hasil_Clustering_dan_Peta.zip')
 
@@ -230,7 +232,7 @@ def main():
             if cls_button:
                 lf, md, rt = st.columns(3)
                 gif_runner = md.image("img/loading.gif", use_column_width=True)
-                delete_results()
+                delete_zip()
                 if param_mode == "Parameter sudah ditentukan":
                     all_k, crime_k, all_meds, crime_meds, new_df = clustering(st.session_state["raw_df"], features, crime, param_mode)
                 elif param_mode == "Menentukan parameter sendiri":
@@ -297,18 +299,13 @@ def main():
                 
                 # zip folder output
                 output_file = f"{temp_path}/CriMap_Hasil_Clustering_dan_Peta.zip"
-                zip_files = ZipFile(output_file,'w')
-                zip_files.write(f"{temp_path}/CriMap_Peta_Kriminalitas.html", os.path.basename(f"{temp_path}/CriMap_Peta_Kriminalitas.html"))
-                zip_files.write(f"{temp_path}/CriMap_Hasil_Cluster.html", os.path.basename(f"{temp_path}/CriMap_Hasil_Cluster.html"))
-                zip_files.write(f"{temp_path}/CriMap_Tabel_Cluster.csv", os.path.basename(f"{temp_path}/CriMap_Tabel_Cluster.csv"))
-                zip_files.close()
+                with zipfile.ZipFile(output_file, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as zip_f:
+                    zip_f.write(f"{temp_path}/CriMap_Peta_Kriminalitas.html", os.path.basename(f"{temp_path}/CriMap_Peta_Kriminalitas.html"))
+                    zip_f.write(f"{temp_path}/CriMap_Hasil_Cluster.html", os.path.basename(f"{temp_path}/CriMap_Hasil_Cluster.html"))
+                    zip_f.write(f"{temp_path}/CriMap_Tabel_Cluster.csv", os.path.basename(f"{temp_path}/CriMap_Tabel_Cluster.csv"))
+                    zip_f.close()
 
-                if os.path.exists(f'{temp_path}/CriMap_Peta_Kriminalitas.html'):
-                    os.remove(f'{temp_path}/CriMap_Peta_Kriminalitas.html')
-                if os.path.exists(f'{temp_path}/CriMap_Hasil_Cluster.html'):
-                    os.remove(f'{temp_path}/CriMap_Hasil_Cluster.html')
-                if os.path.exists(f'{temp_path}/CriMap_Tabel_Cluster.csv'):
-                    os.remove(f'{temp_path}/CriMap_Tabel_Cluster.csv')
+                delete_results()
 
                 file_size = os.path.getsize(output_file)
                 file_size_mb = round(file_size/(1024*1024), 2)
