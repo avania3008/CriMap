@@ -29,7 +29,7 @@ temp_path = tempfile.gettempdir()
 
 geodf = gpd.read_file(r"data/Indonesia_Kab_Kota.zip")
 
-def show_map(df, code_col, data_info, features, crime):
+def create_map(df, code_col, data_info, features, crime):
     java_geodf = geodf[geodf["PROVINSI"].isin(["DKI JAKARTA","JAWA BARAT","JAWA TENGAH","DAERAH ISTIMEWA YOGYAKARTA","JAWA TIMUR","BANTEN"])]
     java_geodf[code_col] = java_geodf["PROVNO"] + java_geodf["KABKOTNO"]
     java_geodf = java_geodf[[code_col,"geometry"]]
@@ -168,14 +168,14 @@ def get_summary_table(table, cluster_col):
     return pivot
 
 def delete_results():
-    if os.path.exists(f'{temp_path}\CriMap_Peta_Kriminalitas.html'):
-        os.remove(f'{temp_path}\CriMap_Peta_Kriminalitas.html')
-    if os.path.exists(f'{temp_path}\CriMap_Hasil_Cluster.html'):
-        os.remove(f'{temp_path}\CriMap_Hasil_Cluster.html')
-    if os.path.exists(f'{temp_path}\CriMap_Tabel_Cluster.csv'):
-        os.remove(f'{temp_path}\CriMap_Tabel_Cluster.csv')
-    if os.path.exists(f'{temp_path}\CriMap_Hasil_Clustering_dan_Peta.zip'):
-        os.remove(f'{temp_path}\CriMap_Hasil_Clustering_dan_Peta.zip')
+    if os.path.exists(f'{temp_path}/CriMap_Peta_Kriminalitas.html'):
+        os.remove(f'{temp_path}/CriMap_Peta_Kriminalitas.html')
+    if os.path.exists(f'{temp_path}/CriMap_Hasil_Cluster.html'):
+        os.remove(f'{temp_path}/CriMap_Hasil_Cluster.html')
+    if os.path.exists(f'{temp_path}/CriMap_Tabel_Cluster.csv'):
+        os.remove(f'{temp_path}/CriMap_Tabel_Cluster.csv')
+    if os.path.exists(f'{temp_path}/CriMap_Hasil_Clustering_dan_Peta.zip'):
+        os.remove(f'{temp_path}/CriMap_Hasil_Clustering_dan_Peta.zip')
 
 def main():
     st.markdown("<h2 style='text-align: center; color:#3E3636;'><i>Clustering</i><br>Data Baru</h2>", unsafe_allow_html=True)
@@ -264,20 +264,20 @@ def main():
                     AgGrid(pivot_crime.reset_index())
 
                 with st.spinner("Harap menunggu sebentar untuk merangkum hasil analisis dan memuat tombol Simpan Hasil"):
-                    time.sleep(15)
+                    time.sleep(10)
                 lf2, md2, rt2 = st.columns(3)
                 gif_runner2 = md2.image("img/loading.gif", use_column_width=True)
                 # create and save map
-                new_map = show_map(new_df, id_col, data_info, features, crime)
-                new_map.save(f"{temp_path}\CriMap_Peta_Kriminalitas.html")
-
+                new_map = create_map(new_df, id_col, data_info, features, crime)
+                new_map.save(f"{temp_path}/CriMap_Peta_Kriminalitas.html")
+                
                 # read result template
                 template_dir = "template/"
                 env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
                 res_template = env.get_template("cluster_result.html")
 
                 # write results to template
-                with open(f"{temp_path}\CriMap_Hasil_Cluster.html","w") as results:
+                with open(f"{temp_path}/CriMap_Hasil_Cluster.html","w") as results:
                     results.write(res_template.render(
                         all_k=all_k,
                         all_meds_table= build_table(all_res_table.iloc[all_meds,:].drop(columns=data_info), "grey_dark", padding="10px", font_family="serif"),
@@ -292,20 +292,21 @@ def main():
                     ))
 
                 # csv output
-                new_df[np.concatenate((data_info,features,["All Cluster","Crime Cluster"]))].to_csv(f"{temp_path}\CriMap_Tabel_Cluster.csv")
+                out_table = new_df[np.concatenate((data_info,features,["All Cluster","Crime Cluster"]))]
+                out_table.to_csv(f"{temp_path}/CriMap_Tabel_Cluster.csv")
                 
                 # zip folder output
-                output_file = f"{temp_path}\CriMap_Hasil_Clustering_dan_Peta.zip"
+                output_file = f"{temp_path}/CriMap_Hasil_Clustering_dan_Peta.zip"
                 zip_files = ZipFile(output_file,'w')
-                zip_files.write(f"{temp_path}\CriMap_Peta_Kriminalitas.html", os.path.basename(f"{temp_path}\CriMap_Peta_Kriminalitas.html"))
-                zip_files.write(f"{temp_path}\CriMap_Hasil_Cluster.html", os.path.basename(f"{temp_path}\CriMap_Hasil_Cluster.html"))
-                zip_files.write(f"{temp_path}\CriMap_Tabel_Cluster.csv", os.path.basename(f"{temp_path}\CriMap_Tabel_Cluster.csv"))
+                zip_files.write(f"{temp_path}/CriMap_Peta_Kriminalitas.html", os.path.basename(f"{temp_path}/CriMap_Peta_Kriminalitas.html"))
+                zip_files.write(f"{temp_path}/CriMap_Hasil_Cluster.html", os.path.basename(f"{temp_path}/CriMap_Hasil_Cluster.html"))
+                zip_files.write(f"{temp_path}/CriMap_Tabel_Cluster.csv", os.path.basename(f"{temp_path}/CriMap_Tabel_Cluster.csv"))
                 zip_files.close()
-                
+
                 file_size = os.path.getsize(output_file)
                 file_size_mb = round(file_size/(1024*1024), 2)
                 dwl_label = f"Simpan Hasil ({file_size_mb} MB)"
-                
+
                 with open(output_file, 'rb') as f:
                     b64 = base64.b64encode(f.read()).decode('utf8')
 
@@ -336,10 +337,10 @@ def main():
                             color: white;
                             }}
                     </style> """
-                
+
                 dl_link = custom_css + f'<a download="CriMap_Hasil_Clustering_dan_Peta.zip" id="{button_id}" href="data:application/zip;base64,{b64}">{dwl_label}</a><br></br>'
-                
+
                 st.warning("PERHATIAN!! Jangan lupa untuk menyimpan hasil saat ini dengan menekan tombol 'Simpan Hasil' sebelum menekan kembali tombol 'Lakukan Clustering' untuk melakukan analisis ulang.")
-                gif_runner2.empty()
                 st.markdown(dl_link, unsafe_allow_html=True)
+                gif_runner2.empty()
                 
