@@ -192,7 +192,7 @@ def main():
         st.session_state["raw_df"] = pd.read_csv(st.session_state["file_upload"])
         st.session_state["raw_file"] = file_uploaded.name
         st.success("Berhasil mengunggah data!")
-    st.info("Data saat ini : {}".format(st.session_state["raw_file"]))
+    st.info("**Data saat ini :** *{}*".format(st.session_state["raw_file"]))
     
     st.markdown("<h4 style='text-align: center; color:#3E3636;'>Tabel Data</h4>", unsafe_allow_html=True)
     raw_df = st.session_state["raw_df"]
@@ -265,14 +265,15 @@ def main():
                     pivot_crime = get_summary_table(crime_res_table,"Crime Cluster")
                     AgGrid(pivot_crime.reset_index())
 
-                with st.spinner("Harap menunggu sebentar untuk merangkum hasil analisis dan memuat tombol Simpan Hasil"):
+                with st.spinner("Harap menunggu sebentar untuk memuat peta dan tombol *Simpan Hasil*"):
                     time.sleep(10)
                 lf2, md2, rt2 = st.columns(3)
                 gif_runner2 = md2.image("img/loading.gif", use_column_width=True)
                 # create and save map
                 new_map = create_map(new_df, id_col, data_info, features, crime)
+                components.html(new_map.get_root().render(), height=500)
                 new_map.save(f"{temp_path}/CriMap_Peta_Kriminalitas.html")
-                
+            
                 # read result template
                 template_dir = "template/"
                 env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
@@ -344,7 +345,7 @@ def main():
 
                 dl_link = custom_css + f'<a download="CriMap_Hasil_Clustering_dan_Peta.zip" id="{button_id}" href="data:application/zip;base64,{b64}">{dwl_label}</a><br></br>'
 
-                st.warning("PERHATIAN!! Jangan lupa untuk menyimpan hasil saat ini dengan menekan tombol 'Simpan Hasil' sebelum menekan kembali tombol 'Lakukan Clustering' untuk melakukan analisis ulang.")
+                st.warning("**PERHATIAN!!** Jangan lupa untuk menyimpan hasil saat ini dengan menekan tombol *Simpan Hasil* sebelum menekan kembali tombol *Lakukan Clustering* untuk melakukan analisis ulang.")
                 st.markdown(dl_link, unsafe_allow_html=True)
                 gif_runner2.empty()
                 

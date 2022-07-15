@@ -57,7 +57,7 @@ def clust_info():
                     Analisis yang dilakukan akan menggunakan tabel data pada langkah nomor 1 (jika dilakukan <i>editing</i> pada tabel data, maka proses analisis akan menggunakan data terbaru yang sudah di-<i>edit</i>)</p>
                 </li>
                 <li>
-                    <p>Setelah menunggu beberapa saat, pengguna dapat melihat hasil analisis <i>cluster</i> dan dapat menyimpan hasil analisis tersebut dengan menekan tombol <strong>Simpan Hasil</strong>. Hasil analisis yang tersimpan akan berupa <i>file .zip</i> yang berisikan 3 macam <i>file</i> :</p>
+                    <p>Setelah menunggu beberapa saat, pengguna dapat melihat hasil analisis <i>cluster</i> dan peta <i>choropleth</i> berdasarkan nomor <i>cluster</i>, serta dapat menyimpan hasil analisis dan peta tersebut dengan menekan tombol <strong>Simpan Hasil</strong>. Hasil analisis yang tersimpan akan berupa <i>file .zip</i> yang berisikan 3 macam <i>file</i> :</p>
                     <p>&bull;&nbsp;<strong>CriMap_Hasil_Cluster.html</strong>&nbsp;:&nbsp;hasil detail analisis secara keseluruhan (visualisasi hasil analisis interaktif)</p>
                     <p>&bull;&nbsp;<strong>CriMap_Peta_Kriminalitas.html</strong>&nbsp;:&nbsp;hasil peta kriminalitas (interaktif)</p>
                     <p>&bull;&nbsp;<strong>CriMap_Tabel_Cluster.csv</strong>&nbsp;:&nbsp;hanya tabel data hasil nomor <i>cluster</i></p>
@@ -112,5 +112,5 @@ def main():
         map_info()
     elif pages == "Clustering":
         clust_info()
-        st.warning("PERINGATAN!!! Setelah pengguna menekan tombol 'Lakukan Clustering' untuk melakukan analisis ulang maka hasil analisis saat itu akan langsung terhapus")
+        st.warning("**PERINGATAN!!!** Setelah pengguna menekan tombol *Lakukan Clustering* untuk melakukan analisis ulang maka hasil analisis saat itu akan langsung terhapus")
     
