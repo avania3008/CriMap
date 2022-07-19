@@ -98,7 +98,6 @@ def create_map(df, code_col, data_info, features, crime):
     fp.LocateControl().add_to(mymap)
     fp.MousePosition(separator=' | ', num_digits=4, prefix='Koordinat').add_to(mymap)
     fp.MiniMap(tile_layer="Stamen Terrain", zoom_animation=True, toggle_display=True).add_to(mymap)
-    fp.ScrollZoomToggler().add_to(mymap)
     return mymap
 
 def num_clust(data_scaled, min_k = 2, max_k = 10):
