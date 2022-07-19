@@ -15,14 +15,15 @@ def map_info():
             <p>Pada halaman ini akan ditampilkan :</p>
             <ol>
                 <li>
-                    <p><u>Peta kriminalitas per kabupaten/kota di Pulau Jawa tahun 2020 yang interaktif.</u><br>Pengguna dapat menganti <i>base map</i> dan juga menampilkan/menyembunyikan <i>layer cluster</i>. Selain itu,
+                    <p><u>Peta kriminalitas untuk kabupaten/kota di Pulau Jawa tahun 2020 yang interaktif.</u><br>Pengguna dapat menganti <i>base map</i> dan juga menampilkan/menyembunyikan <i>layer cluster</i>. Selain itu,
                     pengguna peta dapat melihat informasi masing-masing kabupaten/kota dengan mengarahkan kursor ke wilayah yang dituju</p>
                     <img class="gif" src="data:image/gif;base64,{show_gif("img/interactive_map.gif")}" alt="Peta Interaktif">
                     <br>
                 </li>
                 <li><p><u>Detail data yang digunakan dan visualisasi data mentah.</u><br>Detail dan visualisasi data berupa tabel data hasil <i>clustering</i>, keterangan kolom pada tabel, nilai statistik deskriptif, plot korelasi, dan histogram</p></li>
                 <li>
-                    <p><u>Detail hasil <i>cluster</i> yang terbentuk berupa karakteristik masing-masing <i>cluster</i> dan visualisasi hasil <i>cluster</i> dalam bentuk <i>paralel coordinates</i> yang interaktif</u></p>
+                    <p><u>Detail dan visualisasi hasil analisis <i>cluster</i></u><br>
+                    Terdapat visualisasi data hasil analisis <i>cluster</i> berupa <i>paralel coordinates</i> yang interaktif dan keterangan karakteristik dari masing-masing <i>cluster</i></p>
                     <img class="gif" src="data:image/gif;base64,{show_gif("img/interactive_parcoord.gif")}" alt="Visualisasi Data Interaktif">
                 </li>
             </ol>
@@ -49,7 +50,7 @@ def clust_info():
                     <p>&bull;&nbsp;<strong>Kolom indikator kriminalitas</strong>&nbsp;:&nbsp;satu atau lebih kolom yang merupakan indikator kriminalitas (data numerik)</p>
                     <p>&bull;&nbsp;<strong>Parameter <i>clustering</i></strong>&nbsp;:&nbsp;pengguna dapat memilih jika parameter ingin ditentukan oleh aplikasi atau menentukan parameternya sendiri</p>
                     <p>Jika pengguna memilih untuk menentukan parameter sendiri, maka parameter yang perlu diberikan untuk masing-masing analisis (indikator kriminalitas & lainnya dan indikator kriminalitas saja) antara lain :</p>
-                    <p>&bull;&nbsp;<strong><i>MaxNeighbor</i></strong>&nbsp;:&nbsp;jumlah data point berdekatan yang akan dianalisa</p>
+                    <p>&bull;&nbsp;<strong><i>MaxNeighbor</i></strong>&nbsp;:&nbsp;jumlah <i>data point</i> berdekatan yang akan dianalisis</p>
                     <p>&bull;&nbsp;<strong><i>NumLocal</i></strong>&nbsp;:&nbsp;jumlah iterasi yang dilakukan untuk memperoleh hasil akhir</p>
                 </li>
                 <li>
@@ -84,7 +85,7 @@ def main():
         <p>
             Kriminalitas adalah salah satu masalah sosial yang menjadi perhatian di Indonesia. Salah satu faktor yang mempengaruhi tingkat kriminalitas di Indonesia adalah kepadatan penduduk,
             di mana kepadatan penduduk tertinggi untuk negara Indonesia berada di Pulau Jawa. Analisis pengelompokkan atau analisis <i>cluster</i> dilakukan untuk mengelompokkan dan mengetahui 
-            tingkat kriminalitas dari masing-masing wilayah di Pulau Jawa, khususnya pada tingkat Kabupaten/Kota. Pengunaan algoritma CLARANS dipertimbangkan karena merupakan algoritma <i>clustering</i> 
+            tingkat kriminalitas dari masing-masing wilayah di Pulau Jawa, khususnya pada tingkat kabupaten/kota. Pengunaan algoritma CLARANS dipertimbangkan karena merupakan algoritma <i>clustering</i> 
             partisi yang cukup efektif dan efisien dibandingkan dengan metode-metode partisi pendahulunya.
         </p>
     </div>
@@ -95,7 +96,7 @@ def main():
 
     with obj.expander("Tujuan"):    
         st.markdown('''
-            <p>&bull;&nbsp;Mencari tahu tingkat kriminalitas dari tiap kabupaten dan kota di Pulau Jawa, Indonesia</p>
+            <p>&bull;&nbsp;Mencari tahu kelompok tingkat kriminalitas dari tiap kabupaten dan kota di Pulau Jawa, Indonesia</p>
             <p>&bull;&nbsp;Mendapatkan gambaran mengenai karakteristik tiap kelompok kabupaten dan kota yang terbentuk</p>
             <p>&bull;&nbsp;Menyajikan visualisasi hasil analisis pengelompokkan berupa peta <i>choropleth</i></p>
         ''', unsafe_allow_html=True)
@@ -103,7 +104,7 @@ def main():
     with ben.expander("Manfaat"):
         st.markdown('''
             <p>&bull;&nbsp;Mengetahui faktor-faktor kriminalitas dan faktor sosial lain yang bermasalah dan perlu diperhatikan untuk masing-masing kelompok wilayah</p>
-            <p>&bull;&nbsp;Mempermudah pengguna <i>website CriMap</i> untuk melakukan pemantauan tingkat kriminalitas par kabupaten dan kota di Pulau Jawa, Indonesia</p>
+            <p>&bull;&nbsp;Mempermudah pengguna <i>website</i> CriMap untuk melakukan analisis dan pemantauan tingkat kriminalitas dari kabupaten dan kota di Pulau Jawa, Indonesia</p>
         ''', unsafe_allow_html=True)
 
     st.markdown("<br><h2 style='text-align: center; color:#3E3636;'>Halaman-Halaman pada Aplikasi</h2>", unsafe_allow_html=True)
