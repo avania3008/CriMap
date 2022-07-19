@@ -124,7 +124,6 @@ def create_map():
     fp.LocateControl().add_to(mymap)
     fp.MousePosition(separator=' | ', num_digits=4, prefix='Koordinat').add_to(mymap)
     fp.MiniMap(tile_layer="Stamen Terrain", zoom_animation=True, toggle_display=True).add_to(mymap)
-    fp.ScrollZoomToggler().add_to(mymap)
    
     # # legends (only once)
     # hti = Html2Image(output_path='img')
@@ -143,7 +142,7 @@ def create_map():
     with open("img/legends_cropped.png", 'rb') as lf:
       legend_content = base64.b64encode(lf.read()).decode('utf-8')
 
-    fp.FloatImage('data:image/png;base64,{}'.format(legend_content), bottom=5, left=1).add_to(mymap)
+    fp.FloatImage('data:image/png;base64,{}'.format(legend_content), bottom=1, left=1).add_to(mymap)
     return mymap
     
 def main():
@@ -175,7 +174,7 @@ def main():
                 </tr>
                 <tr>
                   <td>Kode Wilayah</td>
-                  <td>Kode wiilayah resmi suatu kabupaten/kota berdasarkan <a href='https://sig.bps.go.id/bridging-kode/index'>Sistem Informasi Geografis BPS</a></td>\
+                  <td>Kode wilayah resmi suatu kabupaten/kota berdasarkan <a href='https://sig.bps.go.id/bridging-kode/index'>Sistem Informasi Geografis BPS</a></td>\
                 </tr>
                 <tr>
                   <td>Provinsi</td>
@@ -199,11 +198,11 @@ def main():
                 </tr>
                 <tr>
                   <td>CT 2020</td>
-                  <td><i>Crime total<i> atau jumlah tindak pidana tercatat tahun 2020</td>\
+                  <td><i>Crime total</i> atau jumlah tindak pidana tercatat tahun 2020</td>\
                 </tr>
                 <tr>
                   <td>CRR 2020</td>
-                  <td><i>Crime rate<i> atau risiko penduduk terkena tindak kejahatan per 100.000 penduduk tahun 2020</td>\
+                  <td><i>Crime rate</i> atau risiko penduduk terkena tindak kejahatan per 100.000 penduduk tahun 2020</td>\
                 </tr>
                 <tr>
                 <tr>
@@ -355,7 +354,7 @@ def main():
                   <ul>
                     <li>Kepadatan penduduk menengah</li>
                     <li>Persentase penduduk miskin menengah</li>
-                    <li>Rata-rata lama sekolah tinggi</li>
+                    <li>Rata-rata lama sekolah menengah ke atas</li>
                     <li><i>Crime total</i> rendah</li>
                     <li><i>Crime rate</i> menengah ke atas</li>
                   </ul>
