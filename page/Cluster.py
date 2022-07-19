@@ -272,8 +272,12 @@ def main():
                 # create and save map
                 new_map = create_map(new_df, id_col, data_info, features, crime)
                 components.html(new_map.get_root().render(), height=500)
+                gif_runner2.empty()
+ 
+                lf3, md3, rt3 = st.columns(3)
+                gif_runner3 = md3.image("img/loading.gif", use_column_width=True)
                 new_map.save(f"{temp_path}/CriMap_Peta_Kriminalitas.html")
-            
+                
                 # read result template
                 template_dir = "template/"
                 env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
@@ -347,5 +351,5 @@ def main():
 
                 st.warning("**PERHATIAN!!** Jangan lupa untuk menyimpan hasil saat ini dengan menekan tombol *Simpan Hasil* sebelum menekan kembali tombol *Lakukan Clustering* untuk melakukan analisis ulang.")
                 st.markdown(dl_link, unsafe_allow_html=True)
-                gif_runner2.empty()
+                gif_runner3.empty()
                 
