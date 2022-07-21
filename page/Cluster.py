@@ -270,12 +270,14 @@ def main():
                 gif_runner2 = md2.image("img/loading.gif", use_column_width=True)
                 # create and save map
                 new_map = create_map(new_df, id_col, data_info, features, crime)
-                components.html(new_map.get_root().render(), height=500)
+                # components.html(new_map.get_root().render(), height=500)
                 gif_runner2.empty()
  
+                # save map
                 lf3, md3, rt3 = st.columns(3)
                 gif_runner3 = md3.image("img/loading.gif", use_column_width=True)
-                new_map.save(f"{temp_path}/CriMap_Peta_Kriminalitas.html")
+                new_map_file = f"{temp_path}/CriMap_Peta_Kriminalitas.html"
+                new_map.save(new_map_file)
                 
                 # read result template
                 template_dir = "template/"
@@ -283,7 +285,8 @@ def main():
                 res_template = env.get_template("cluster_result.html")
 
                 # write results to template
-                with open(f"{temp_path}/CriMap_Hasil_Cluster.html","w") as results:
+                new_res_file = f"{temp_path}/CriMap_Hasil_Cluster.html"
+                with open(new_res_file,"w") as results:
                     results.write(res_template.render(
                         all_k=all_k,
                         all_meds_table= build_table(all_res_table.iloc[all_meds,:].drop(columns=data_info), "grey_dark", padding="10px", font_family="serif"),
@@ -298,15 +301,16 @@ def main():
                     ))
 
                 # csv output
+                new_csv_file = f"{temp_path}/CriMap_Tabel_Cluster.csv"
                 out_table = new_df[np.concatenate((data_info,features,["All Cluster","Crime Cluster"]))]
-                out_table.to_csv(f"{temp_path}/CriMap_Tabel_Cluster.csv")
+                out_table.to_csv(new_csv_file)
                 
                 # zip folder output
                 output_file = f"{temp_path}/CriMap_Hasil_Clustering_dan_Peta.zip"
                 with zipfile.ZipFile(output_file, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as zip_f:
-                    zip_f.write(f"{temp_path}/CriMap_Peta_Kriminalitas.html", os.path.basename(f"{temp_path}/CriMap_Peta_Kriminalitas.html"))
-                    zip_f.write(f"{temp_path}/CriMap_Hasil_Cluster.html", os.path.basename(f"{temp_path}/CriMap_Hasil_Cluster.html"))
-                    zip_f.write(f"{temp_path}/CriMap_Tabel_Cluster.csv", os.path.basename(f"{temp_path}/CriMap_Tabel_Cluster.csv"))
+                    zip_f.write(new_map_file, os.path.basename(new_map_file))
+                    zip_f.write(new_res_file, os.path.basename(new_res_file))
+                    zip_f.write(new_csv_file, os.path.basename(new_csv_file))
                     zip_f.close()
 
                 delete_results()

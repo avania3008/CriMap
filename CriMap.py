@@ -1,5 +1,3 @@
-#run apps in terminal : streamlit run CriMap.py
-#stop apps : ctrl + c
 import page.Home as Home
 import page.Cluster as Cluster
 import page.Map as Map
