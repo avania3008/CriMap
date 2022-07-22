@@ -352,7 +352,7 @@ def main():
                 <td><i>Need a little attention</i><br>(Butuh sedikit perhatian)</td>
                 <td>
                   <ul>
-                    <li>Kepadatan penduduk menengah</li>
+                    <li>Kepadatan penduduk menengah ke bawah</li>
                     <li>Persentase penduduk miskin menengah</li>
                     <li>Rata-rata lama sekolah menengah ke atas</li>
                     <li><i>Crime total</i> rendah</li>
