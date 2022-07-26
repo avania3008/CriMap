@@ -113,6 +113,6 @@ def main():
         map_info()
     elif pages == "Clustering":
         clust_info()
-        # st.warning("**PERINGATAN!!!** Setelah pengguna menekan tombol *Lakukan Clustering* untuk melakukan analisis ulang maka hasil analisis saat itu akan langsung terhapus")
-        st.warning("**PERINGATAN!!!** Setelah pengguna menekan tombol *Lakukan Clustering* untuk melakukan analisis ulang ataupun tombol *Simpan Hasil* untuk mengunduh hasil analisis, maka hasil analisis saat itu akan langsung terhapus.")
+        st.warning("**PERINGATAN!!!** Setelah pengguna menekan tombol *Lakukan Clustering* untuk melakukan analisis ulang maka hasil analisis saat itu akan langsung terhapus")
+        # st.warning("**PERINGATAN!!!** Setelah pengguna menekan tombol *Lakukan Clustering* untuk melakukan analisis ulang ataupun tombol *Simpan Hasil* untuk mengunduh hasil analisis, maka hasil analisis saat itu akan langsung terhapus.")
     

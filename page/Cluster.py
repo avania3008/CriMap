@@ -319,43 +319,43 @@ def main():
                 file_size_mb = round(file_size/(1024*1024), 2)
                 dwl_label = f"Simpan Hasil ({file_size_mb} MB)"
 
-                # with open(output_file, 'rb') as f:
-                #     b64 = base64.b64encode(f.read()).decode()
+                with open(output_file, 'rb') as f:
+                    b64 = base64.b64encode(f.read()).decode()
 
-                # button_uuid = str(uuid.uuid4()).replace('-', '')
-                # button_id = re.sub('\d+', '', button_uuid)
+                button_uuid = str(uuid.uuid4()).replace('-', '')
+                button_id = re.sub('\d+', '', button_uuid)
 
-                # custom_css = f""" 
-                #     <style>
-                #         #{button_id} {{
-                #             background-color: rgb(255, 255, 255);
-                #             color: rgb(38, 39, 48);
-                #             padding: 0.25em 0.38em;
-                #             position: relative;
-                #             text-decoration: none;
-                #             border-radius: 4px;
-                #             border-width: 1px;
-                #             border-style: solid;
-                #             border-color: rgb(230, 234, 241);
-                #             border-image: initial;
-                #         }} 
-                #         #{button_id}:hover {{
-                #             border-color: rgb(246, 51, 102);
-                #             color: rgb(246, 51, 102);
-                #         }}
-                #         #{button_id}:active {{
-                #             box-shadow: none;
-                #             background-color: rgb(246, 51, 102);
-                #             color: white;
-                #             }}
-                #     </style> """
+                custom_css = f""" 
+                    <style>
+                        #{button_id} {{
+                            background-color: rgb(255, 255, 255);
+                            color: rgb(38, 39, 48);
+                            padding: 0.25em 0.38em;
+                            position: relative;
+                            text-decoration: none;
+                            border-radius: 4px;
+                            border-width: 1px;
+                            border-style: solid;
+                            border-color: rgb(230, 234, 241);
+                            border-image: initial;
+                        }} 
+                        #{button_id}:hover {{
+                            border-color: rgb(246, 51, 102);
+                            color: rgb(246, 51, 102);
+                        }}
+                        #{button_id}:active {{
+                            box-shadow: none;
+                            background-color: rgb(246, 51, 102);
+                            color: white;
+                            }}
+                    </style> """
 
-                # dl_link = custom_css + f'<a download="CriMap_Hasil_Clustering_dan_Peta.zip" id="{button_id}" href="data:application/zip;base64,{b64}">{dwl_label}</a><br></br>'
+                dl_link = custom_css + f'<a download="CriMap_Hasil_Clustering_dan_Peta.zip" id="{button_id}" href="data:application/zip;base64,{b64}">{dwl_label}</a><br></br>'
 
-                # st.warning("**PERHATIAN!!** Jangan lupa untuk menyimpan hasil saat ini dengan menekan tombol *Simpan Hasil* sebelum menekan kembali tombol *Lakukan Clustering* untuk melakukan analisis ulang.")
-                # st.markdown(dl_link, unsafe_allow_html=True)
-                st.warning("**PERHATIAN!!** Jangan lupa untuk menyimpan hasil saat ini dengan menekan tombol *Simpan Hasil* sebelum menekan kembali tombol *Lakukan Clustering* untuk melakukan analisis ulang. Setelah menekan tombol *Simpan Hasil* maka hasil analisis saat itu akan langsung terhapus.")
-                with open(output_file, "rb") as zip_file:
-                    st.download_button(label=dwl_label, data=zip_file, mime="application/zip", file_name="CriMap_Hasil_Clustering_dan_Peta.zip")
+                st.warning("**PERHATIAN!!** Jangan lupa untuk menyimpan hasil saat ini dengan menekan tombol *Simpan Hasil* sebelum menekan kembali tombol *Lakukan Clustering* untuk melakukan analisis ulang.")
+                st.markdown(dl_link, unsafe_allow_html=True)
+                # st.warning("**PERHATIAN!!** Jangan lupa untuk menyimpan hasil saat ini dengan menekan tombol *Simpan Hasil* sebelum menekan kembali tombol *Lakukan Clustering* untuk melakukan analisis ulang. Setelah menekan tombol *Simpan Hasil* maka hasil analisis saat itu akan langsung terhapus.")
+                # with open(output_file, "rb") as zip_file:
+                #     st.download_button(label=dwl_label, data=zip_file, mime="application/zip", file_name="CriMap_Hasil_Clustering_dan_Peta.zip")
                 gif_runner3.empty()
                 
