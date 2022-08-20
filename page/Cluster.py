@@ -181,16 +181,19 @@ def delete_zip():
 def main():
     st.markdown("<h2 style='text-align: center; color:#3E3636;'><i>Clustering</i><br>Data Baru</h2>", unsafe_allow_html=True)
     if "raw_file" not in st.session_state:
-        st.session_state["raw_file"] = "data/java_crime_2020.csv"
+        st.session_state["raw_file"] = None
 
     if "raw_df" not in st.session_state:
-        st.session_state["raw_df"] = pd.read_csv(st.session_state["raw_file"])
+        st.session_state["raw_df"] = None
 
     file_uploaded = st.file_uploader("Anda dapat menggunakan data yang sudah tersedia (tahun 2020) atau mengunggah data Anda sendiri", type=["csv"], accept_multiple_files=False, key="file_upload")
     if st.session_state["file_upload"]:  
         st.session_state["raw_df"] = pd.read_csv(st.session_state["file_upload"])
         st.session_state["raw_file"] = file_uploaded.name
         st.success("Berhasil mengunggah data!")
+    else:
+        st.session_state["raw_file"] = "data/java_crime_2020.csv"
+        st.session_state["raw_df"] = pd.read_csv(st.session_state["raw_file"])
     st.info("**Data saat ini :** *{}*".format(st.session_state["raw_file"]))
     
     st.markdown("<h4 style='text-align: center; color:#3E3636;'>Tabel Data</h4>", unsafe_allow_html=True)
