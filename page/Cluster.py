@@ -105,14 +105,22 @@ def num_clust(data_scaled, min_k = 2, max_k = 10):
     elbow_data.process()
     return elbow_data.get_amount()
 
-def clustering(df, features, crime, mode, mn_all=5, nl_all=2, mn_crime=5, nl_crime=2):
+def clustering(df, features, crime, mode, k_all=None, k_crime=None, mn_all=5, nl_all=2, mn_crime=5, nl_crime=2):
     # try:
     # standardize the data
     features_scaled = StandardScaler().fit_transform(df[features])
     crime_scaled = StandardScaler().fit_transform(df[crime])
     # get k parameter
-    k_all = num_clust(features_scaled)
-    k_crime = num_clust(crime_scaled)
+    if k_all == None:
+        k_all = num_clust(features_scaled)
+    else:
+        k_all = k_all
+
+    if k_crime == None:
+        k_crime = num_clust(crime_scaled)
+    else:
+        k_crime = k_crime
+
     # parameters
     if mode == "Parameter sudah ditentukan":
         n = df.shape[0]
@@ -185,6 +193,14 @@ def main():
 
     if "raw_df" not in st.session_state:
         st.session_state["raw_df"] = None
+    st.markdown('''
+    <strong>Ketentuan data yang dibutuhkan dalam <i>file</i> yang akan digunakan untuk proses <i>clustering</i> antara lain : </strong>
+    <ul style="text-align:justify;">
+        <li>Wajib memiliki kolom kode wilayah Pulau Jawa tingkat kabupaten/kota<br><i>Contoh : Kabupaten Kepulauan Seribu kode wilayahnya 3101 (31 kode tingkat provinsi & 01 kode tingkat kabupaten/kota)</i></li>
+        <li>Wajib memiliki setidaknya satu kolom untuk merepresentasikan nama wilayah</li>
+        <li>Memiliki minimal 2 data indikator yang akan digunakan untuk proses <i>clustering</i></li>
+    </ul>
+    ''', unsafe_allow_html=True)
 
     file_uploaded = st.file_uploader("Anda dapat menggunakan data yang sudah tersedia (tahun 2020) atau mengunggah data Anda sendiri", type=["csv"], accept_multiple_files=False, key="file_upload")
     if st.session_state["file_upload"]:  
@@ -222,9 +238,14 @@ def main():
         elif not crime:
             st.info("Dimohon memilih setidaknya satu kolom / variabel / indikator dari kolom terpilih sebelumnya sebagai indikator kriminalitas")
         elif features and crime:
+            n_clusters = st.radio("Pengaturan jumlah cluster",["Jumlah cluster otomatis ditentukan","Menentukan jumlah cluster sendiri"])
+            if n_clusters == "Menentukan jumlah cluster sendiri":
+                col_l, col_r = st.columns(2)
+                k_all = col_l.number_input("Number of Clusters (Kriminalitas & Lainnya)",value=3, min_value=2, max_value=15, help="Jumlah cluster indikator kriminalitas dan indikator lainnya yang ingin dibentuk (minimal 2 & maksimal 15 cluster)", key="nclust_all") 
+                k_crime = col_r.number_input("Number of Clusters (Kriminalitas)",value=3, min_value=2, max_value=15, help="Jumlah cluster indikator kriminalitas yang ingin dibentuk (minimal 2 & maksimal 15 cluster)", key="nclust_crime") 
             param_mode = st.radio("Pengaturan parameter clustering",["Parameter sudah ditentukan","Menentukan parameter sendiri"])
             if param_mode == "Menentukan parameter sendiri":
-                col1, col2, col3, col4 = st.columns([2,2,2,2])
+                col1, col2, col3, col4 = st.columns(4)
                 mn_all = col1.number_input("MaxNeighbor (Kriminalitas & Lainnya)",value=5, min_value=1, help="Maxneighbor atau jumlah data point berdekatan yang akan dianalisa (untuk clustering indikator kriminalitas dan indikator lainnya")                    
                 nl_all = col2.number_input("NumLocal (Kriminalitas & Lainnya)",value=2, min_value=1, help="Numlocal atau jumlah iterasi yang ingin dicapai sampai mendapatkan hasil analisa cluster (untuk clustering indikator kriminalitas dan indikator lainnya")
                 mn_crime = col3.number_input("MaxNeighbor (Kriminalitas)",value=5, min_value=1, help="Maxneighbor atau jumlah data point berdekatan yang akan dianalisa (untuk clustering indikator kriminalitas saja")
@@ -235,10 +256,16 @@ def main():
                 lf, md, rt = st.columns(3)
                 gif_runner = md.image("img/loading.gif", use_column_width=True)
                 delete_zip()
-                if param_mode == "Parameter sudah ditentukan":
-                    all_k, crime_k, all_meds, crime_meds, new_df = clustering(st.session_state["raw_df"], features, crime, param_mode)
-                elif param_mode == "Menentukan parameter sendiri":
-                    all_k, crime_k, all_meds, crime_meds, new_df = clustering(st.session_state["raw_df"], features, crime, param_mode, mn_all, nl_all, mn_crime, nl_crime)                                                                                                                                                           
+                if n_clusters == "Menentukan jumlah cluster sendiri":
+                    if param_mode == "Parameter sudah ditentukan":
+                        all_k, crime_k, all_meds, crime_meds, new_df = clustering(st.session_state["raw_df"], features, crime, param_mode, k_all, k_crime)
+                    elif param_mode == "Menentukan parameter sendiri":
+                        all_k, crime_k, all_meds, crime_meds, new_df = clustering(st.session_state["raw_df"], features, crime, param_mode, k_all, k_crime, mn_all, nl_all, mn_crime, nl_crime)
+                elif n_clusters == "Jumlah cluster otomatis ditentukan":
+                    if param_mode == "Parameter sudah ditentukan":
+                        all_k, crime_k, all_meds, crime_meds, new_df = clustering(st.session_state["raw_df"], features, crime, param_mode, None, None)
+                    elif param_mode == "Menentukan parameter sendiri":
+                        all_k, crime_k, all_meds, crime_meds, new_df = clustering(st.session_state["raw_df"], features, crime, param_mode, None, None, mn_all, nl_all, mn_crime, nl_crime)                                                                                                                                                          
                 gif_runner.empty()
                 st.markdown("<h2 style='text-align: center; color:#3E3636;'>Hasil Analisis <i>Cluster</i></h2>", unsafe_allow_html=True)
                 all_res_table = new_df[np.concatenate((data_info, features, ["All Cluster"]))]
